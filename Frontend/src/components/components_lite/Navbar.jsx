@@ -36,9 +36,10 @@ const Navbar = () => {
   };
   return (
     <div className="bg-white">
-      <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
+      <div className="flex items-center justify-between mx-auto max-w-7xl h-16 bg-green-100">
         <div>
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-2xl font-bold flex items-center">
+            <img src="/LOGO.PNG" alt="." className="w-12 h-12"/>      
             <span className="text-[#6B3AC2]">Hire</span>{""}
             <span className="text-[#FA4F09]">Verse</span>
           </h1>
@@ -48,29 +49,29 @@ const Navbar = () => {
             {user && user.role === "Recruiter" ? (
               <>
                 <li>
-                  <Link to={"/admin/companies"}>Companies</Link>
+                  <Link to={"/admin/companies"} className={"border-2 py-2 px-3 border-gray-400 rounded-full hover:bg-white"}>Companies</Link>
                 </li>
                 <li>
-                  <Link to={"/admin/jobs"}>Jobs</Link>
+                  <Link to={"/admin/jobs"} className={"border-2 py-2 px-3 border-gray-400 rounded-full hover:bg-white"}>Jobs</Link>
                 </li>
               </>
             ) : (
               <>
                 <li>
                   {" "}
-                  <Link to={"/Home"}>Home</Link>
+                  <Link to={"/Home"} className={"border-2 py-2 px-3 border-gray-400 rounded-full hover:bg-white"}>Home</Link>
                 </li>
                 <li>
                   {" "}
-                  <Link to={"/Browse"}>Browse</Link>{" "}
+                  <Link to={"/Browse"} className={"border-2 py-2 px-3 border-gray-400 rounded-full hover:bg-white"}>Browse</Link>{" "}
                 </li>
                 <li>
                   {" "}
-                  <Link to={"/Jobs"}>Jobs</Link>
+                  <Link to={"/Jobs"} className={"border-2 py-2 px-3 border-gray-400 rounded-full hover:bg-white"}>Jobs</Link>
                 </li>
                 <li>
                   {" "}
-                  <Link to={"/Creator"}>About</Link>
+                  <Link to={"/Creator"} className={"border-2 py-2 px-3 border-gray-400 rounded-full hover:bg-white"}>About</Link>
                 </li>
               </>
             )}
@@ -93,7 +94,7 @@ const Navbar = () => {
               <PopoverTrigger asChild>
                 <Avatar className="cursor-pointer">
                   <AvatarImage
-                    src={user?.profile?.profilePhoto}
+                    src={user?.profile?.profilePhoto||"defaultlogo.jpg"}
                     alt="@shadcn"
                   />
                 </Avatar>
@@ -102,7 +103,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4 space-y-2">
                   <Avatar className="cursor-pointer">
                     <AvatarImage
-                      src={user?.profile?.profilePhoto}
+                      src={user?.profile?.profilePhoto||"defaultlogo.jpg"}
                       alt="@shadcn"
                     />
                   </Avatar>

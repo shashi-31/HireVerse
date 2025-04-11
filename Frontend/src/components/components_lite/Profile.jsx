@@ -24,7 +24,7 @@ const Profile = () => {
           <div className="flex items-center gap-5">
             <Avatar className="cursor-pointer h-24 w-24">
               <AvatarImage
-                src={user?.profile?.profilePhoto}
+                src={user?.profile?.profilePhoto||"defaultlogo.jpg"}
                 alt="@shadcn"
               />
             </Avatar>

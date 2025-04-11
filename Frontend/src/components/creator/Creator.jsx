@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Navbar from "../components_lite/Navbar"
 const Creator = () => {
   return (
+    <div><Navbar />
     <div className="bg-white py-12 px-6 md:px-20 lg:px-32">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-900 mb-6">About HireVerse</h1>
@@ -55,6 +56,7 @@ const Creator = () => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -39,17 +39,18 @@ export const register = async (req, res) => {
       });
     }
 
-    const file = req.file;
-    if (!file) {
-      return res.status(400).json({
-        message: "Profile image is required",
-        success: false,
-      });
-    }
-
+     const file = req.file;
+    // if (!file) {
+    //   return res.status(400).json({
+    //     message: "Profile image is required",
+    //     success: false,
+    //   });
+    // }
+    let cloudResponse ="";
+    if(file){
     const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-
+    cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
@@ -191,9 +192,11 @@ export const updateProfile = async (req, res) => {
 
     if (file) {
       const fileUri = getDataUri(file);
-      const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+      const cloudResponse = await cloudinary.uploader.upload(fileUri.content,{
+        resource_type: "raw", // 👈 IMPORTANT for PDFs
+});
       user.profile.resume = cloudResponse.secure_url;
-      user.profile.resumeOriginalName = file.originalname;
+      user.profile.resumeOriginalname = file.originalname;
     }
 
     await user.save();
