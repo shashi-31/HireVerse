@@ -32,7 +32,7 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/description/:id",
-    element: <Description />,
+    element: <ProtectedRoute><Description /></ProtectedRoute> ,
   },
   {
     path: "/Profile",
